@@ -706,7 +706,7 @@ h3 {
   transition: fill 250ms var(--timing-function);
 }
 
-.btn-close-modal:hover  .btn-icon-close,
+.btn-close-modal:hover .btn-icon-close,
 .btn-close-modal:focus .btn-icon-close {
   fill: var(--аccent-color);
 }
@@ -795,16 +795,12 @@ h3 {
 }
 
 .form-policy {
-    position: relative; 
+    position: relative;
+    display:flex;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   
-    min-width: 423px;
-    margin-right: auto;
-    margin-left: auto;
+    padding-left: 36px;
     margin-bottom: 30px;
+
     cursor: pointer;
 }
 
@@ -815,7 +811,7 @@ h3 {
 
     position: absolute;
     top: 50%;
-    left: 0;
+    left:13px;
     transform: translateY(-50%);
     display: block;
 }
@@ -832,8 +828,10 @@ h3 {
     display: block;
     position: absolute;
 
+    margin-right: 7px;
+
     top: 50%;
-    left: 0;
+    left: 13px;
     transform: translateY(-50%);
 
     width: 16px;
@@ -847,7 +845,7 @@ h3 {
     position: absolute;
 
     top: 50%;
-    left: 0;
+    left: 13px;
     transform: translateY(-50%);
 
     background-color:var(--аccent-color);
