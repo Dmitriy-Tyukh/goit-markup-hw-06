@@ -26,7 +26,7 @@ html {
 *::after {
   box-sizing: inherit;
 }
-*,
+
 *:focus {
   outline: none;
 }
@@ -667,20 +667,20 @@ h3 {
 
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-
   transition: transform 250ms var(--timing-function), opacity 250ms var(--timing-function);
 
   background-color: #ffffff;
 }
 
 .btn-close-modal {
+  display: inline-block;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -695,79 +695,98 @@ h3 {
   margin: 0;
   padding: 0;
   border-radius: 50%;
+
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
 .btn-icon-close {
-  fill: #000000;
+  fill:#212121;
   background-color: #ffffff;
+  transition: fill 250ms var(--timing-function);
 }
 
-.btn-close-modal:hover .btn-icon-close,
+.btn-close-modal:hover  .btn-icon-close,
 .btn-close-modal:focus .btn-icon-close {
   fill: var(--аccent-color);
 }
+ 
+/* -------   form   ------- */
 
 .form-modal {
-  margin: 40px;
-  display: flex;
-  flex-direction: column;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
-.form-modal p {
+
+.form-content {
   font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
   text-align: center;
 
-  margin-bottom: 12px;
-
+  margin-bottom: 30px;
+  
   color: var(--title-text-color);
-  padding: 0;
 }
 
 .form-field-modal {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 }
 
-.form-field-modal label {
-  font-size: 12px;
-  line-height: 1.67;
-  letter-spacing: 0.01em;
+.form-field-modal:focus-within > .form-input {
+    border: 1px solid var(--аccent-color);
 }
-
-.form-input-group {
-  position: relative;
-
-  display: flex;
-  align-items: center;
+.form-field-modal:focus-within > .form-modal-icon {
+    fill: var(--аccent-color);
 }
 
 .form-input {
-  display: flex;
-  padding: 11px 12px;
-  width: 100%;
-
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  border-radius: 4px;
+    width: 100%;
+    padding: 11px 12px 11px 42px;
+    
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    
+    caret-color:currentcolor;
+    cursor: pointer;
+    
+    transition: border 250ms var(--timing-function);
 }
 
 .form-modal-icon {
-  position: absolute;
-  left: 12px;
+    position: absolute;
+    pointer-events: none;
+
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+
+    fill: #212121;
+    transition: fill 250ms var(--timing-function);
+}
+
+.form-leble {
+    position: absolute;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+    padding: 0;
+    transform: translateY(-150%);
+}
+
+.coment-modal-form {
+    margin-bottom: 20px;
 }
 
 .form-coment {
     resize: none;
-    width: 100%;
     height: 120px;
     padding: 12px 16px;
-}
-.coment-modal-form {
-    margin-bottom: 20px;
 }
 
 .form-coment::placeholder {
@@ -777,21 +796,72 @@ h3 {
 }
 
 .form-policy {
+    position: relative; 
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+   
     min-width: 423px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.check-agree {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: block;
+}
+
+.check-agree:focus:checked ~ .icon-checked {
+    opacity: 1;
+   }
+
+.check-lable {
+    padding-left: 23px;
+}
+
+.check-box {
+    display: block;
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 16px;
+    height: 15px;
+    border: 2px solid #212121;
+    background-color:#ffffff;
+    border-radius: 2px;
+}
+
+.icon-checked {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    background-color:var(--аccent-color);
+    border-radius: 2px;
+
+    opacity: 0;
+    transition: opacity 250ms var(--timing-function);
 }
 
 .form-policy .link {
     text-decoration: underline;
     color:var(--аccent-color)
   }
-
-.link {
-}
 
 .btn-form-send {
     display: flex;
@@ -802,9 +872,9 @@ h3 {
     height: 50px;
   
     margin: 0 auto;
+    padding: 0;
     
     font-family: inherit;
-    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 1.88;
@@ -821,8 +891,7 @@ h3 {
   .btn-send:hover,
   .btn-send:focus {
     background-color: #188ce8;
-  }   
-
+  }
 
 /*             page portfolio            */
 
